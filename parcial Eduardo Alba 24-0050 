@@ -1,0 +1,56 @@
+
+def calcular_promedio(notas):
+    return sum(notas) / 4
+
+def capturar_notas_estudiante():
+    nombre = input("Ingrese el nombre del estudiante: ")
+    matricula = input("Ingrese la matrícula del estudiante: ")
+
+    while True:
+        nota_1 = int(input("Ingrese la nota 1: "))
+        if nota_1 >= 0 and nota_1 <= 100:
+            break
+        else:
+            print("Error: La nota debe estar entre 0 y 100.")
+
+    while True:
+        nota_2 = int(input("Ingrese la nota 2: "))
+        if nota_2 >= 0 and nota_2 <= 100:
+            break
+        else:
+            print("Error: La nota debe estar entre 0 y 100.")
+
+    while True:
+        nota_3 = int(input("Ingrese la nota 3: "))
+        if nota_3 >= 0 and nota_3 <= 100:
+            break
+        else:
+            print("Error: La nota debe estar entre 0 y 100.")
+
+    while True:
+        nota_4 = int(input("Ingrese la nota 4: "))
+        if nota_4 >= 0 and nota_4 <= 100:
+            break
+        else:
+            print("Error: La nota debe estar entre 0 y 100.")
+
+    promedio = calcular_promedio([nota_1, nota_2, nota_3, nota_4])
+    print(f"Promedio de notas para {nombre} (matrícula {matricula}): {promedio:.2f}")
+
+    return nombre, matricula, promedio
+
+def main():
+    estudiantes = []
+
+    while True:
+        nombre, matricula, promedio = capturar_notas_estudiante()
+        estudiantes.append((nombre, matricula, promedio))  
+        continuar = input("¿Desea incluir otro estudiante? (s/n): ")
+        if continuar == 'n':
+            break
+
+    print("\nPromedios de todos los estudiantes capturados:")
+    for estudiante in estudiantes:
+        print(f"{estudiante[0]} (matrícula {estudiante[1]}): {estudiante[2]:}")
+
+main()
